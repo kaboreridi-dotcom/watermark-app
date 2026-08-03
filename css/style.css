@@ -1,3 +1,4 @@
+/* Définition des variables : Sombre par défaut */
 :root {
   --bg-main: #0f172a;
   --bg-card: #1e293b;
@@ -7,7 +8,62 @@
   --primary-hover: #2563eb;
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
+  --canvas-bg: #020617;
   --radius: 10px;
+}
+
+/* Redéfinition pour le thème clair */
+[data-theme="light"] {
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-input: #f1f5f9;
+  --border-color: #cbd5e1;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --canvas-bg: #e2e8f0;
+}
+
+/* Alignement dans le header */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Bouton de switch de thème */
+.theme-toggle-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 8px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--bg-input);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Arrière-plan du canevas dynamique */
+.canvas-wrapper {
+  background: var(--canvas-bg);
+  transition: background-color 0.3s ease;
+}
+
+/* Transition douce lors du changement de thème */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.sidebar, .preview-section, .author-badge, .contact-btn {
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 * {
@@ -276,4 +332,65 @@ canvas {
 
 .hidden {
   display: none !important;
+}
+
+/* Ajustement En-tête */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.author-badge {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+}
+
+.author-badge strong {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+/* Pied de page */
+.footer {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.copyright {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.contact-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.contact-btn:hover {
+  background: var(--bg-input);
+  border-color: var(--primary);
+  color: var(--primary);
 }
