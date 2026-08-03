@@ -1,5 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Éléments du DOM
+
+  // --- GESTION DU THÈME (CLAIR / SOMBRE) ---
+const themeToggleBtn = document.getElementById('themeToggleBtn');
+const iconMoon = themeToggleBtn.querySelector('.icon-moon');
+const iconSun = themeToggleBtn.querySelector('.icon-sun');
+
+// Détection de la préférence enregistrée ou système
+const savedTheme = localStorage.getItem('theme');
+const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+const initialTheme = savedTheme || (systemPrefersLight ? 'light' : 'dark');
+applyTheme(initialTheme);
+
+themeToggleBtn.addEventListener('click', () => {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  applyTheme(newTheme);
+});
+
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+
+  if (theme === 'light') {
+    iconMoon.classList.add('hidden');
+    iconSun.classList.remove('hidden');
+  } else {
+    iconSun.classList.add('hidden');
+    iconMoon.classList.remove('hidden');
+  }
+}
+
   const mediaInput = document.getElementById('mediaInput');
   const mediaFileName = document.getElementById('mediaFileName');
   const watermarkText = document.getElementById('watermarkText');
